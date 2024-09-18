@@ -24,11 +24,11 @@
 
 3. Install dependencies:
 
-`npm install`
+`pnpm install`
 
 
 ### Running the Project
 
 To start the development server with Vite and React:
 
-`npm run dev`
+`pnpm run dev`

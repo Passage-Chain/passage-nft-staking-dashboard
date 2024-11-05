@@ -1,9 +1,9 @@
 import React from 'react'
 
-const index = () => {
+const Navbar = () => {
   return (
     <div>index</div>
   )
 }
 
-export default index
+export default Navbar;

@@ -2,7 +2,7 @@
 
 ## Supported Wallets
 
-- **Keplr**: Currently, Passage Marketplace supports Keplr wallet for transactions and wallet management. We aim to add more wallets in the future.
+- **Keplr**: Currently, Passage NFT Staking Dashboard supports Keplr wallet for transactions and wallet management. We aim to add more wallets in the future.
 
 
 ## Getting Started

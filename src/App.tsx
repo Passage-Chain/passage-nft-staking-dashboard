@@ -1,13 +1,13 @@
-import './App.css'
 
+
+import RouteProvider from "./routes";
 function App() {
-
-
-  return (
-    <>
-      
-    </>
-  )
+ 
+   return (
+     <>
+       <RouteProvider />
+     </>
+   );
 }
 
-export default App
+export default App;

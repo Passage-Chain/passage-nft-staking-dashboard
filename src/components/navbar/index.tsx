@@ -1,8 +1,13 @@
-import React from 'react'
+
+import DesktopNavbar from "./desktopnavbar";
+import MobileNavbar from "./mobilenavbar";
 
 const Navbar = () => {
   return (
-    <div>index</div>
+    <>
+      <DesktopNavbar />
+      <MobileNavbar />
+    </>
   )
 }
 

@@ -13,7 +13,10 @@ const DesktopStakingCard = ({
   reward,
   percentage,
 }: IDesktopStakingCard) => (
-  <div className="border-t border-b border-gray-800 py-4">
+  <div
+    className="border-t border-b border-gray-800 py-4 cursor-pointer"
+    onClick={() => window.open(`/vault/${id}`)}
+  >
     <div className="flex items-center gap-4">
       <span className="text-gray-400">{id}</span>
       <div className="flex flex-1 items-center justify-between">
@@ -51,7 +54,10 @@ const MobileStakingCard = ({
   reward,
   percentage,
 }: IMobileStakingCard) => (
-  <div className="flex items-center gap-4 p-4 border-b border-blue-900/30 hover:bg-blue-900/20 transition-colors">
+  <div
+    className="flex items-center gap-4 p-4 border-b border-blue-900/30 hover:bg-blue-900/20 transition-colors cursor-pointer"
+    onClick={() => window.open(`/vault/${id}`)}
+  >
     <span className="text-gray-400 min-w-[20px]">{id}</span>
     <div className="flex flex-1 items-center justify-between gap-4 flex-wrap sm:flex-nowrap">
       <div className="flex items-center gap-3 min-w-[200px]">
@@ -75,11 +81,38 @@ const MobileStakingCard = ({
   </div>
 );
 
-
 const ValutsCollection = () => {
   const midPoint = Math.ceil(vaults.length / 2);
   const firstHalf = vaults.slice(0, midPoint);
   const secondHalf = vaults.slice(midPoint);
+
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1023px)" });
+
+  if (isTabletOrMobile) {
+    return (
+      <div className="bg-black/90 rounded-lg overflow-hidden">
+        <div className="flex justify-between px-4 py-3 bg-black/50 text-sm text-gray-400">
+          <span>#Collections / Price</span>
+          <span>Reward</span>
+        </div>
+
+        <div className="divide-y divide-blue-900/30">
+          {vaults.map((item) => (
+            <MobileStakingCard
+              key={item.id}
+              id={item.id}
+              title={item.title}
+              image={item.image}
+              tokenId={item.tokenId}
+              amount={item.amount}
+              reward={item.reward}
+              percentage={item.percentage}
+            />
+          ))}
+        </div>
+      </div>
+    );
+  }
   return (
     <div className="grid grid-cols-2 gap-8 bg-black">
       {[firstHalf, secondHalf].map((columnItems, gridIndex) => (

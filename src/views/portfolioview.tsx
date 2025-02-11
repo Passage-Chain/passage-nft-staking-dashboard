@@ -1,10 +1,10 @@
+import { useState } from "react";
 import { Shell } from "../components/ui/shell";
 import { NFTCard } from "../components/nft-card";
-import { Button } from "../components/ui/button";
 import OverviewCard from "../components/cards/overviewcard";
 import { TbCopy } from "react-icons/tb";
 
-const RewardView = () => {
+const PortfolioView = () => {
   const initialCards = [
     {
       image: "/assets/nft1.svg",
@@ -35,6 +35,9 @@ const RewardView = () => {
       price: "3100",
     },
   ];
+
+  const [cardState, setcardState] = useState("Staked NFT");
+  const handleCardState = (value: string) => setcardState(value);
   return (
     <Shell variant="default">
       {/* Desktop View */}
@@ -50,14 +53,11 @@ const RewardView = () => {
                 </span>
               </p>
               <p>
-                Reward balance{" "}
+                Portfolio balance{" "}
                 <span className="font-bold text-[20px]">567,325.23 PASG</span>
               </p>
             </div>
           </div>
-          <Button className="font-medium" size="sm">
-            Claim reward
-          </Button>
         </div>
         <div className="grid md:grid-cols-3 grid-cols-1 gap-8">
           <OverviewCard title="Total value locked" amount="1000,0000 PSG" />
@@ -68,17 +68,27 @@ const RewardView = () => {
 
       <div className="space-y-8">
         <div>
-          <div className="flex justify-between items-center">
-            <h2 className="text-[30px] font-bold text-white mb-4">
-              Staked Collection
-            </h2>
-            <div className="md:flex hidden gap-4">
-              <Button variant="outline" size="sm" className="font-medium">
-                Select
-              </Button>
-              <Button className="font-medium" size="sm">
-                Untake all Nfts
-              </Button>
+          <div className="my-6">
+            <div className="flex justify-between">
+              <div className="bg-[#222223] rounded-full flex items-center">
+                <p
+                  className={`px-6 py-1 rounded-full sm:cursor-pointer ${
+                    cardState === "Staked NFT" ? "bg-[#3f3e40]" : ""
+                  }`}
+                  onClick={() => handleCardState("Staked NFT")}
+                >
+                  Staked NFT
+                </p>
+                <p
+                  className={`px-4 py-1 rounded-full sm:cursor-pointer ${
+                    cardState === "My NFTs" ? "bg-[#3f3e40]" : ""
+                  }`}
+                  onClick={() => handleCardState("My NFTs")}
+                >
+                  My NFTs
+                </p>
+              </div>
+              <div>Duration</div>
             </div>
           </div>
 
@@ -98,4 +108,4 @@ const RewardView = () => {
   );
 };
 
-export default RewardView;
+export default PortfolioView;
